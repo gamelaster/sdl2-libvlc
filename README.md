@@ -32,5 +32,6 @@ sdl2-libvlc <filename>
 And there you go!
 
 ![alt text](https://cdn.marekkraus.sk/2017-12/sdl2-libvlc_2017-12-23_12-00-51.png "Windows libvlc sdl2 build")
+(that effects looks like video is corrupted, but it's in the video)
 ![alt text](https://cdn.marekkraus.sk/2017-12/vmware_2017-12-23_12-00-18.png "Linux libvlc sdl2 build")
 

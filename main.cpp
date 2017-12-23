@@ -116,7 +116,7 @@ int main(int argc, char *argv[]) {
         quit(3);
     }
 
-    context.renderer = SDL_CreateRenderer(window, -1, 0);
+    context.renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
     if (!context.renderer) {
         fprintf(stderr, "Couldn't create renderer: %s\n", SDL_GetError());
         quit(4);

@@ -131,18 +131,25 @@ int main(int argc, char *argv[]) {
         quit(5);
     }
 
-    context.mutex = SDL_CreateMutex();
-
-    // If you don't have this variable set you must have plugins directory
-    // with the executable or libvlc_new() will not work!
-    printf("VLC_PLUGIN_PATH=%s\n", getenv("VLC_PLUGIN_PATH"));
+    context.mutex = SDL_CreateMutex(); 
 
     // Initialise libVLC.
     libvlc = libvlc_new(vlc_argc, vlc_argv);
     if(NULL == libvlc) {
         printf("LibVLC initialization failure.\n");
         return EXIT_FAILURE;
-    }
+    } 
+    
+
+    // If you don't have this variable set you must have plugins directory
+    // with the executable or libvlc_new() will not work!     
+    //got the defines from here:https://stackoverflow.com/questions/5919996/how-to-detect-reliably-mac-os-x-ios-linux-windows-in-c-preprocessor
+    #if TARGET_OS_OSX 
+    //gets it from the macos applications default
+    printf("VLC_PLUGIN_PATH=/Applications/VLC.app/Contents/MacOS/plugins\n", getenv("VLC_PLUGIN_PATH")); //macos plugins path
+    #else  
+    printf("VLC_PLUGIN_PATH=%s\n", getenv("VLC_PLUGIN_PATH"));
+    #endif
 
     m = libvlc_media_new_path(libvlc, argv[1]);
     mp = libvlc_media_player_new_from_media(m);

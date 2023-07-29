@@ -147,6 +147,8 @@ int main(int argc, char *argv[]) {
     #if TARGET_OS_OSX 
     //gets it from the macos applications default
     printf("VLC_PLUGIN_PATH=/Applications/VLC.app/Contents/MacOS/plugins\n", getenv("VLC_PLUGIN_PATH")); //macos plugins path
+    #else  
+    printf("VLC_PLUGIN_PATH=%s\n", getenv("VLC_PLUGIN_PATH"));
     #endif
 
     m = libvlc_media_new_path(libvlc, argv[1]);
